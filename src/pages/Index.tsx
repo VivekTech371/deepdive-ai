@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Zap, FileText, Users, Headphones, MessageSquare, Globe } from "lucide-react";
-import { transcripts, categories, streamFragments } from "@/data/mockData";
-import { TranscriptCard } from "@/components/TranscriptCard";
+import { categories, streamFragments } from "@/data/mockData";
+import { FeaturedTranscripts } from "@/components/FeaturedTranscripts";
 import { useRef, useState, useEffect } from "react";
 
 const DataStream = () => {
@@ -118,11 +118,11 @@ const Index = () => {
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
-                to="/chat"
+                to="/conferences"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border bg-card text-foreground font-display font-semibold text-sm hover:border-primary/30 transition-colors"
               >
-                <MessageSquare className="w-4 h-4 text-signal" />
-                Ask a Question
+                <Zap className="w-4 h-4 text-accent" />
+                Conference Archive
               </Link>
             </motion.div>
           </div>
@@ -142,23 +142,7 @@ const Index = () => {
       </section>
 
       {/* Featured transcripts */}
-      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 py-16">
-        <div className="flex items-end justify-between mb-8">
-          <div>
-            <h2 className="font-display text-2xl font-bold mb-1">Featured Transcripts</h2>
-            <p className="text-sm text-muted-foreground">Curated highlights from the archive</p>
-          </div>
-          <Link to="/categories" className="text-sm font-mono text-primary hover:underline flex items-center gap-1">
-            View all <ArrowRight className="w-3 h-3" />
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {transcripts.slice(0, 6).map((t, i) => (
-            <TranscriptCard key={t.id} transcript={t} index={i} />
-          ))}
-        </div>
-      </section>
+      <FeaturedTranscripts />
 
       {/* Categories preview */}
       <section className="border-t border-border bg-secondary/20">
@@ -251,14 +235,14 @@ const Index = () => {
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-16 text-center">
           <h2 className="font-display text-2xl font-bold mb-3">Ready to explore?</h2>
           <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-            Search through 1,251 transcripts, ask questions with AI, or listen to generated audio summaries.
+            Search through 1,251 transcripts with AI-powered summaries, chat, and audio on every transcript.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
             <Link to="/categories" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-display font-semibold text-sm glow-bitcoin">
               Browse Archive <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link to="/chat" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border bg-card text-sm font-semibold hover:border-primary/30">
-              <Zap className="w-4 h-4 text-signal" /> Try AI Chat
+            <Link to="/conferences" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border bg-card text-sm font-semibold hover:border-primary/30">
+              <Zap className="w-4 h-4 text-accent" /> Conference Archive
             </Link>
           </div>
         </div>
