@@ -11,9 +11,7 @@ import Speakers from "./pages/Speakers";
 import Types from "./pages/Types";
 import Sources from "./pages/Sources";
 import TranscriptDetail from "./pages/TranscriptDetail";
-import Chat from "./pages/Chat";
 import ConferenceArchive from "./pages/ConferenceArchive";
-import AudioGeneration from "./pages/AudioGeneration";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 
@@ -34,9 +32,7 @@ const App = () => (
             <Route path="/types" element={<Types />} />
             <Route path="/sources" element={<Sources />} />
             <Route path="/transcript/:id" element={<TranscriptDetail />} />
-            <Route path="/chat" element={<Chat />} />
             <Route path="/conferences" element={<ConferenceArchive />} />
-            <Route path="/audio" element={<AudioGeneration />} />
             <Route path="/about" element={<About />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

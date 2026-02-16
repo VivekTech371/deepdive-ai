@@ -7,8 +7,6 @@ import { motion, AnimatePresence } from "framer-motion";
 const navItems = [
   { label: "Explore", path: "/categories" },
   { label: "Conferences", path: "/conferences" },
-  { label: "Chat", path: "/chat" },
-  { label: "Audio", path: "/audio" },
   { label: "About", path: "/about" },
 ];
 
@@ -189,7 +187,6 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
               <div className="flex flex-col gap-2">
                 <Link to="/categories" className="text-sm text-foreground hover:text-primary transition-colors">Categories</Link>
                 <Link to="/conferences" className="text-sm text-foreground hover:text-primary transition-colors">Conferences</Link>
-                <Link to="/chat" className="text-sm text-foreground hover:text-primary transition-colors">Chat</Link>
                 <Link to="/about" className="text-sm text-foreground hover:text-primary transition-colors">About</Link>
               </div>
             </div>
