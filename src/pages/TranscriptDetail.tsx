@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { transcripts } from "@/data/mockData";
 import { Calendar, Mic, Tag, Clock, Bookmark, Share2, Globe, Download, Check, Copy, FileText, MessageSquare, Headphones } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { TranscriptChat } from "@/components/TranscriptChat";
 import { TranscriptAudio } from "@/components/TranscriptAudio";
 import { toast } from "sonner";
@@ -16,6 +16,19 @@ const TranscriptDetail = () => {
   const [isSaved, setIsSaved] = useState(false);
   const [showTranslate, setShowTranslate] = useState(false);
   const [selectedLang, setSelectedLang] = useState("en");
+  const translateRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (translateRef.current && !translateRef.current.contains(e.target as Node)) {
+        setShowTranslate(false);
+      }
+    };
+    if (showTranslate) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [showTranslate]);
 
   if (!transcript) {
     return (
@@ -130,7 +143,7 @@ const TranscriptDetail = () => {
                 >
                   <Copy className="w-3.5 h-3.5" /> Share
                 </button>
-                <div className="relative">
+                <div className="relative" ref={translateRef}>
                   <button
                     onClick={() => setShowTranslate(!showTranslate)}
                     className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
