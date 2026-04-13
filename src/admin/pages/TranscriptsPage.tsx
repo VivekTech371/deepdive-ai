@@ -107,7 +107,7 @@ export default function TranscriptsPage() {
               </tr>
             ) : (
               transcripts.map((t) => (
-                <tr key={t._id} className="hover:bg-muted/30 transition-colors">
+                <tr key={t.id} className="hover:bg-muted/30 transition-colors">
                   <td className="px-4 py-3 font-medium max-w-[250px] truncate">{t.title}</td>
                   <td className="px-4 py-3 hidden md:table-cell text-muted-foreground">{t.conference || "—"}</td>
                   <td className="px-4 py-3 hidden lg:table-cell text-muted-foreground truncate max-w-[200px]">
@@ -125,10 +125,10 @@ export default function TranscriptsPage() {
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-1">
-                      <button onClick={() => setEditingId(t._id)} className="p-1.5 rounded hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground">
+                      <button onClick={() => setEditingId(t.id)} className="p-1.5 rounded hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground">
                         <Pencil className="w-3.5 h-3.5" />
                       </button>
-                      <button onClick={() => setDeletingId(t._id)} className="p-1.5 rounded hover:bg-destructive/10 transition-colors text-muted-foreground hover:text-destructive">
+                      <button onClick={() => setDeletingId(t.id)} className="p-1.5 rounded hover:bg-destructive/10 transition-colors text-muted-foreground hover:text-destructive">
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
                     </div>

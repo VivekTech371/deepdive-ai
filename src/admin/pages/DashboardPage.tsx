@@ -28,7 +28,7 @@ export default function DashboardPage() {
   ];
 
   const recent = [...transcripts]
-    .sort((a, b) => new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime())
+    .sort((a, b) => new Date(b.created_at || 0).getTime() - new Date(a.created_at || 0).getTime())
     .slice(0, 8);
 
   return (
@@ -59,7 +59,7 @@ export default function DashboardPage() {
               <p className="p-4 text-sm text-muted-foreground">No transcripts yet.</p>
             ) : (
               recent.map((t) => (
-                <div key={t._id} className="flex items-center justify-between px-4 py-3">
+                <div key={t.id} className="flex items-center justify-between px-4 py-3">
                   <div>
                     <p className="text-sm font-medium">{t.title}</p>
                     <p className="text-xs text-muted-foreground">
