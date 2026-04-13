@@ -1,11 +1,14 @@
 import { Navigate, Outlet, Link, useLocation } from "react-router-dom";
 import { useAuth } from "./AuthContext";
-import { LayoutDashboard, FileText, Activity, LogOut, Menu, X } from "lucide-react";
+import { LayoutDashboard, FileText, Activity, LogOut, Menu, X, Youtube, Video, Zap } from "lucide-react";
 import { useState } from "react";
 
 const navItems = [
   { to: "/admin", icon: LayoutDashboard, label: "Dashboard" },
   { to: "/admin/transcripts", icon: FileText, label: "Transcripts" },
+  { to: "/admin/channels", icon: Youtube, label: "Channels" },
+  { to: "/admin/videos", icon: Video, label: "Videos" },
+  { to: "/admin/ingestion", icon: Zap, label: "Ingestion Runs" },
   { to: "/admin/health", icon: Activity, label: "Health" },
 ];
 

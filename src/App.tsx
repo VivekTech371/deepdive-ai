@@ -20,6 +20,9 @@ import LoginPage from "./admin/pages/LoginPage";
 import DashboardPage from "./admin/pages/DashboardPage";
 import TranscriptsPage from "./admin/pages/TranscriptsPage";
 import HealthPage from "./admin/pages/HealthPage";
+import YouTubeChannelsPage from "./admin/pages/YouTubeChannelsPage";
+import YouTubeVideosPage from "./admin/pages/YouTubeVideosPage";
+import IngestionRunsPage from "./admin/pages/IngestionRunsPage";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +50,9 @@ const App = () => (
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<DashboardPage />} />
               <Route path="transcripts" element={<TranscriptsPage />} />
+              <Route path="channels" element={<YouTubeChannelsPage />} />
+              <Route path="videos" element={<YouTubeVideosPage />} />
+              <Route path="ingestion" element={<IngestionRunsPage />} />
               <Route path="health" element={<HealthPage />} />
             </Route>
 
