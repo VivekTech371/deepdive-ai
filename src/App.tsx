@@ -14,6 +14,12 @@ import TranscriptDetail from "./pages/TranscriptDetail";
 import ConferenceArchive from "./pages/ConferenceArchive";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+import { AuthProvider } from "./admin/AuthContext";
+import { AdminLayout } from "./admin/AdminLayout";
+import LoginPage from "./admin/pages/LoginPage";
+import DashboardPage from "./admin/pages/DashboardPage";
+import TranscriptsPage from "./admin/pages/TranscriptsPage";
+import HealthPage from "./admin/pages/HealthPage";
 
 const queryClient = new QueryClient();
 
@@ -23,20 +29,30 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Layout>
+        <AuthProvider>
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/categories" element={<Categories />} />
-            <Route path="/topics" element={<Topics />} />
-            <Route path="/speakers" element={<Speakers />} />
-            <Route path="/types" element={<Types />} />
-            <Route path="/sources" element={<Sources />} />
-            <Route path="/transcript/:id" element={<TranscriptDetail />} />
-            <Route path="/conferences" element={<ConferenceArchive />} />
-            <Route path="/about" element={<About />} />
-            <Route path="*" element={<NotFound />} />
+            {/* Public site */}
+            <Route path="/" element={<Layout><Index /></Layout>} />
+            <Route path="/categories" element={<Layout><Categories /></Layout>} />
+            <Route path="/topics" element={<Layout><Topics /></Layout>} />
+            <Route path="/speakers" element={<Layout><Speakers /></Layout>} />
+            <Route path="/types" element={<Layout><Types /></Layout>} />
+            <Route path="/sources" element={<Layout><Sources /></Layout>} />
+            <Route path="/transcript/:id" element={<Layout><TranscriptDetail /></Layout>} />
+            <Route path="/conferences" element={<Layout><ConferenceArchive /></Layout>} />
+            <Route path="/about" element={<Layout><About /></Layout>} />
+
+            {/* Admin panel */}
+            <Route path="/admin/login" element={<LoginPage />} />
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<DashboardPage />} />
+              <Route path="transcripts" element={<TranscriptsPage />} />
+              <Route path="health" element={<HealthPage />} />
+            </Route>
+
+            <Route path="*" element={<Layout><NotFound /></Layout>} />
           </Routes>
-        </Layout>
+        </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
