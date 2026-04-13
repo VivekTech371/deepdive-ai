@@ -32,8 +32,6 @@ const App = () => (
         <AuthProvider>
           <Routes>
             {/* Public site */}
-            <Route element={<Layout><Routes><Route path="*" element={null} /></Routes></Layout>}>
-            </Route>
             <Route path="/" element={<Layout><Index /></Layout>} />
             <Route path="/categories" element={<Layout><Categories /></Layout>} />
             <Route path="/topics" element={<Layout><Topics /></Layout>} />
